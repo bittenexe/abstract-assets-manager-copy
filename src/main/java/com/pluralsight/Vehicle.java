@@ -1,7 +1,7 @@
 package com.pluralsight;
 
 import java.math.BigDecimal;
-import java.time.Year;
+import java.time.LocalDate;
 
 public class Vehicle extends Asset {
     protected String makeModel;
@@ -44,7 +44,7 @@ public class Vehicle extends Asset {
 
     @Override
     public BigDecimal getValue() {
-        int age = Year.now().getValue() - this.year;
+        int age = LocalDate.now().getYear() - this.year;
 
         if (age > 10) {
             return new BigDecimal("1000.00");
