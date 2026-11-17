@@ -16,6 +16,7 @@ public class Vehicle extends Asset {
         this.odometer = odometer;
     }
 
+    //region Getters/Setters
     public String getMakeModel() {
         return makeModel;
     }
@@ -39,6 +40,7 @@ public class Vehicle extends Asset {
     public void setYear(int year) {
         this.year = year;
     }
+    //endregion
 
     @Override
     public BigDecimal getValue() {
