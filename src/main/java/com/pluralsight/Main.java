@@ -11,9 +11,24 @@ public class Main {
 
         // public Vehicle(String description, String dateAcquired, BigDecimal originalCost,
         // String makeModel, int year, int odometer)
-        Asset vehicleAsset = new Vehicle("Rosie's Car", "2026-04-09", new BigDecimal(65000), "Toyota Supra", 2026, 1000);
+        Asset vehicleAsset = new Vehicle("Rosie's Car", "2026-04-09", new BigDecimal("65000"), "Toyota Supra", 2023, 1000);
 
-        System.out.println(houseAsset);
-        System.out.println(vehicleAsset);
+        if (houseAsset instanceof House) {
+            House house = (House) houseAsset;
+            System.out.println("Description: " + house.getDescription());
+            System.out.println("Date Acquired: " + house.getDateAcquired());
+            System.out.println("Original Cost: " + house.getOriginalCost());
+            System.out.println("Value: " + house.getValue());
+        }
+
+        System.out.println();
+
+        if (vehicleAsset instanceof Vehicle) {
+            Vehicle vehicle = (Vehicle) vehicleAsset;
+            System.out.println("Description: " + vehicle.getDescription());
+            System.out.println("Date Acquired: " + vehicle.getDateAcquired());
+            System.out.println("Original Cost: " + vehicle.getOriginalCost());
+            System.out.println("Value: " + vehicle.getValue());
+        }
     }
 }

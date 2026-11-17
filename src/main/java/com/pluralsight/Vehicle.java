@@ -1,12 +1,12 @@
 package com.pluralsight;
 
 import java.math.BigDecimal;
+import java.time.Year;
 
 public class Vehicle extends Asset {
-    private String makeModel;
-    private int year;
-    private int odometer;
-
+    protected String makeModel;
+    protected int year;
+    protected int odometer;
 
     public Vehicle(String description, String dateAcquired, BigDecimal originalCost,
                    String makeModel, int year, int odometer) {
@@ -16,7 +16,6 @@ public class Vehicle extends Asset {
         this.odometer = odometer;
     }
 
-    //region Getters/Setters
     public String getMakeModel() {
         return makeModel;
     }
@@ -40,5 +39,27 @@ public class Vehicle extends Asset {
     public void setYear(int year) {
         this.year = year;
     }
-    //endregion
+
+    @Override
+    public BigDecimal getValue() {
+        int age = Year.now().getValue() - this.year;
+        BigDecimal value;
+
+        if (age > 10) {
+            return new BigDecimal("1000.00");
+        }
+
+        BigDecimal annualRate;
+        if (age <= 3) {
+            annualRate = new BigDecimal("0.03");
+        } else if (age <= 6) {
+            annualRate = new BigDecimal("0.06");
+        } else {
+            annualRate = new BigDecimal("0.08");
+        }
+
+        BigDecimal totalRate = annualRate.multiply(new BigDecimal(age));
+        return originalCost.subtract(originalCost.multiply(totalRate));
+
+    }
 }

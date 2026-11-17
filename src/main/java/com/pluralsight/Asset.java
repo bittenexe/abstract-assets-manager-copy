@@ -26,11 +26,16 @@ public class Asset {
     public void setDateAcquired(String dateAcquired) {
         this.dateAcquired = dateAcquired;
     }
+    public BigDecimal getValue() {
+        return originalCost;
+    }
     public BigDecimal getOriginalCost() {
         return originalCost;
     }
     public void setOriginalCost(BigDecimal originalCost) {
-        this.originalCost = originalCost; // returns original cost
+        this.originalCost = originalCost;
     }
     //endregion
 }
+
+
